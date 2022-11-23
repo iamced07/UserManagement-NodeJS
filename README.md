@@ -1,11 +1,11 @@
 # UserManagement-NodeJS
-A simple user management system with CRUD functionality using NodeJS for the backend and MySQL for the database.
+A simple user management system with CRUD functionality using NodeJS(ExpressJS) for the backend and MySQL for the database.
  
 # Installation
 
 This installation assumes that NodeJS is already installed in your system.
 
-### Express Installation
+### ExpressJS Installation
 ```
 npm install express
 ```
@@ -22,4 +22,11 @@ npm install sequelize-cli
 ```
 
 ### To initialize sequelize to the project
-npx sequelize-cli
+```
+npx sequelize-cli init
+```
+
+### Body-Parser Installation
+```
+npm i body-parser
+```
