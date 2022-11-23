@@ -45,14 +45,14 @@ const getUsers = (req, res) => {
 };
 
 const updateUser = (req, res) => {
-  const id = req.params.id;
+  const firstName = req.params.id;
   let updatePayload = {};
   for (const key in req.body) {
     if (req.body[key]) {
       updatePayload[key] = req.body[key];
     }
   }
-  User.update(updatePayload, { where: { id: id } })
+  User.update(updatePayload, { where: { firstName: firstName } })
     .then((result) => {
       if (result[0]!=0) {
         res.status(200).json({
@@ -76,7 +76,7 @@ const updateUser = (req, res) => {
 
 const deleteUser = (req, res) => {
   const id = req.params.id;
-  User.destroy({ where: { id: id } })
+  User.destroy({ where: { firstName: id } })
     .then((result) => {
       if (result) {
         res.status(200).json({
@@ -91,7 +91,7 @@ const deleteUser = (req, res) => {
       }
     })
     .catch((error) => {
-      res.status(200).json({
+      res.status(500).json({
         message: "Something went wrong!",
         data: error,
       });
@@ -99,8 +99,8 @@ const deleteUser = (req, res) => {
 };
 
 const multipleDeleteUser = (req, res) => {
-  const ids = req.body;
-  User.destroy({ where: { id: ids } })
+  const firstNames = req.body;
+  User.destroy({ where: { firstName: firstNames } })
     .then((result) => {
       if (result) {
         res.status(200).json({
@@ -115,7 +115,7 @@ const multipleDeleteUser = (req, res) => {
       }
     })
     .catch((error) => {
-      res.status(200).json({
+      res.status(500).json({
         message: "Something went wrong!",
         data: error,
       });
